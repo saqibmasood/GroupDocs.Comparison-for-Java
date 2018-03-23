@@ -1,23 +1,12 @@
 package com.groupdocs.comparison.examples;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 
-import javax.imageio.ImageIO;
-
-import com.groupdocs.comparison.*;
 import com.groupdocs.comparison.common.license.License;
 //ExStart:commonutilitiesclass
 public class Utilities {
@@ -47,6 +36,9 @@ public class Utilities {
 			// Setup license
 			License lic = new License();
 			lic.setLicense(licensePath.toString());
+			if(lic.isValidLicense()){
+				System.out.println("License is validated");
+			}
 		} catch (Exception exp) {
 			System.out.println("Exception: " + exp.getMessage());
 			exp.printStackTrace();
@@ -94,6 +86,7 @@ public class Utilities {
 		String targetFilePath = targetPath + targetFile;
 		InputStream targetStream = new FileInputStream(targetFilePath);
 		return targetStream;
+	
 	}
 }
 //ExEnd:commonutilitiesclass
